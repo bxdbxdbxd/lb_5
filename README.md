@@ -19,3 +19,41 @@
 | Условие | Описание | Пример ошибки | Ожидаемое сообщение |
 |--------------|---------------|---------------|---------------|
 | Синтаксическая чистота | "AST строится только для строк, не содержащих ошибок" | let a = pr("3"); | Строка игнорируется (не соответствует структуре научной нотации) |
+
+
+## Структура AST
+
+AST описание:
+
+ProgramNode - корень дерева, содержит список объявлений
+
+DeclarationNode - каждое объявление переменной с let
+
+FunctionCallNode - вызов parseFloat с аргументом-строкой
+
+ScientificNode - научная нотация (мантисса + экспонента)
+
+DecimalNode / IntegerNode - конкретные числовые значения
+
+LiteralNode - универсальный узел для простых литералов
+
+
+Формат вывода AST в программе.
+```
+ProgramNode
+│
+├── DeclarationNode
+├── name: "number"
+├── modifiers: ["let"]
+└── value: FunctionCallNode
+├── name: "parseFloat"
+└── arguments: 
+└── StringArgumentNode
+└── value: ScientificNode
+├── mantissa: DecimalNode
+├── integerPart: "3"
+└── fractionalPart: "234"
+└── exponent: ExponentNode
+├── sign: "+"
+└── value: "4"
+```
