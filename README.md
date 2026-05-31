@@ -25,35 +25,20 @@
 
 AST описание:
 
-ProgramNode - корень дерева, содержит список объявлений
+ProgramNode — корневой узел дерева. Содержит список всех корректных инструкций программы.
 
-DeclarationNode - каждое объявление переменной с let
+VariableDeclNode — узел объявления переменной. Хранит имя переменной (Id) и узел инициализирующего выражения.
 
-FunctionCallNode - вызов parseFloat с аргументом-строкой
+FunctionCallNode — узел вызова функции. Хранит имя функции (parseFloat) и список аргументов.
 
-ScientificNode - научная нотация (мантисса + экспонента)
-
-DecimalNode / IntegerNode - конкретные числовые значения
-
-LiteralNode - универсальный узел для простых литералов
+LiteralNode — листовой узел. Хранит тип (string, number) и значение.
 
 
-Формат вывода AST в программе.
-```
-ProgramNode
-│
-├── DeclarationNode
-├── name: "number"
-├── modifiers: ["let"]
-└── value: FunctionCallNode
-├── name: "parseFloat"
-└── arguments: 
-└── StringArgumentNode
-└── value: ScientificNode
-├── mantissa: DecimalNode
-├── integerPart: "3"
-└── fractionalPart: "234"
-└── exponent: ExponentNode
-├── sign: "+"
-└── value: "4"
-```
+Пример форматированного вывода AST (для строки let a = parseFloat('3.24');):
+
+text
+'''Program
+└── VariableDeclNode (id: a)
+    └── FunctionCallNode (name: parseFloat)
+        └── LiteralNode (Строковая константа: '3.24')
+        '''
