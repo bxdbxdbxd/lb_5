@@ -45,3 +45,8 @@ Program
     └── FunctionCallNode (name: parseFloat)
         └── LiteralNode (Строковая константа: '3.24')
 ```
+
+## Примеры
+
+1. Корректный ввод
+
