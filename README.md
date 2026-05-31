@@ -36,9 +36,9 @@ LiteralNode — листовой узел. Хранит тип (string, number) 
 
 Пример форматированного вывода AST (для строки let a = parseFloat('3.24');):
 
-text
-'''Program
+```
+Program
 └── VariableDeclNode (id: a)
     └── FunctionCallNode (name: parseFloat)
         └── LiteralNode (Строковая константа: '3.24')
-        '''
+```
